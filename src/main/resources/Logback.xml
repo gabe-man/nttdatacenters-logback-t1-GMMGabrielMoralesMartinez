@@ -1,0 +1,21 @@
+<configuration>
+	<timestamp key="logDate" datePattern="dd-MM-yyyy"></timestamp>
+	<appender name="NTTDataAppenderRFA" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		
+		<encoder>
+			<pattern>%date{dd MMM yyy; HH:mm:ss:SSS} [%thread] %-5level %logger{36} - [%method] - %msg%n</pattern>
+		</encoder>
+		
+    	<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      		<fileNamePattern>C://devs//logs//logGMMGabrielMoralesMartinez.%d{dd-MM-yyyy}.%i.log.zip</fileNamePattern>
+      		<maxFileSize>50KB</maxFileSize>
+      		<maxHistory>3</maxHistory>
+      		<totalSizeCap>150KB</totalSizeCap>
+    	</rollingPolicy>
+    </appender>
+	
+	<root level="info">
+		<appender-ref ref="NTTDataAppenderRFA"/>
+	</root>
+</configuration>
