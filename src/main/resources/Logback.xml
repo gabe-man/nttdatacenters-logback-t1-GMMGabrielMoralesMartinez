@@ -3,16 +3,21 @@
 	<appender name="NTTDataAppenderRFA" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<append>true</append>
 		
-		<encoder>
+		<file>C://devs//logs//logGMMGabrielMoralesMartinez-${logDate}.log</file>
+		
+    	<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      		<fileNamePattern>C://devs//logs//logGMMGabrielMoralesMartinez-${logDate}.%i.log.zip</fileNamePattern>
+      		<minIndex>1</minIndex>
+      		<maxIndex>3</maxIndex>
+    	</rollingPolicy>
+    	
+    	<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+    		<maxFileSize>50KB</maxFileSize>
+    	</triggeringPolicy>
+    	
+    	<encoder>
 			<pattern>%date{dd MMM yyy; HH:mm:ss:SSS} [%thread] %-5level %logger{36} - [%method] - %msg%n</pattern>
 		</encoder>
-		
-    	<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-      		<fileNamePattern>C://devs//logs//logGMMGabrielMoralesMartinez.%d{dd-MM-yyyy}.%i.log.zip</fileNamePattern>
-      		<maxFileSize>50KB</maxFileSize>
-      		<maxHistory>3</maxHistory>
-      		<totalSizeCap>150KB</totalSizeCap>
-    	</rollingPolicy>
     </appender>
 	
 	<root level="info">
